@@ -82,8 +82,12 @@ void multArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
     }
 }
 
-void transportArray(int **arr1, int **arrResult, int row, int col){
-    
+void transportArray(int **arr, int **arrResult, int row, int col){
+    for(int i = 0; i<col; i++){
+        for (int j = 0; j<row; j++) {
+            arrResult[i][j] = arr[j][i];
+        }
+    }
 }
 
 
@@ -165,15 +169,13 @@ int main(int argc, const char * argv[]) {
                 arrayDelete(resultArray, rows);
                 break;
             case 3:
-                //sub
+                //mult
                 cout<<"Mult First and Second array\n";
                 if(rows == cols){
                     resultArray = creat2Darr(rows, cols);
                     multArrays(myArray1, myArray2, resultArray, rows, cols);
                     
-                    //cout<<"Mult First and Second array\n";
                     printArray(resultArray, rows, cols);
-                    
                     arrayDelete(resultArray, rows);
                 } else {
                     cout<<"Такие матрицы нельзя перемножить, так как количество столбцов матрицы А не равно количеству строк матрицы В.\n";
@@ -181,6 +183,16 @@ int main(int argc, const char * argv[]) {
                     answer = false;
                     break;
                 }
+                break;
+            case 4:
+                //transport
+                resultArray = creat2Darr(cols, rows);
+            
+                transportArray(myArray1, resultArray, rows, cols);
+        
+                cout<<"Tarnsport First array\n";
+                printArray(resultArray, cols, rows);
+                arrayDelete(resultArray, cols);
                 break;
                 
             default:

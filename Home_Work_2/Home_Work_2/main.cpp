@@ -91,14 +91,28 @@ void transportArray(int **arr, int **arrResult, int row, int col){
 }
 
 
+void zeroArrays(int **arr, int **arrResult, int row, int col){
+    for(int i = 0; i<row; i++){
+        for (int j = 0; j<col; j++) {
+            if(i != j){
+                arrResult[i][j] = arr[i][j];
+            } else {
+                arrResult[i][j] = 0;
+            }
+        }
+    }
+}
+
+
 
 int main(int argc, const char * argv[]) {
     //раскомить!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //srand(time(NULL));
+    srand(time(NULL));
     //раскомить!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     int rows, cols;
     int **myArray1;
     int **myArray2;
+    int **resultArray;
     
     int type;
     
@@ -144,10 +158,11 @@ int main(int argc, const char * argv[]) {
         
         
         switch (type) {
+               
             case 1:
                 //sum
                 cout<<"===========================\n";
-                int **resultArray;
+                
                 
                 resultArray = creat2Darr(rows, cols);
                 sumArrays(myArray1, myArray2, resultArray, rows, cols);
@@ -194,13 +209,33 @@ int main(int argc, const char * argv[]) {
                 printArray(resultArray, cols, rows);
                 arrayDelete(resultArray, cols);
                 break;
+            case 5:
+                //sum
+                cout<<"===========================\n";
+                if(rows == cols){
+                resultArray = creat2Darr(rows, cols);
+                
+
+                zeroArrays(myArray1, resultArray, rows, cols);
+                
+                cout<<"Sum First and Second array\n";
+                cout<<"===========================\n";
+                printArray(resultArray, rows, cols);
+                
+                arrayDelete(resultArray, rows);
+                } else {
+                    cout<<"Выбраная матрица не явлется квадратичной не возможно обнаружить диагональ!\n";
+                    cout<<"Try again  >>>>>>>>>>>>>>>>>>>>>>\n";
+                    answer = false;
+                    break;
+                }
+                break;
                 
             default:
                 break;
         }
         
-        
-        
+
         //delete myArrays
         arrayDelete(myArray1, rows);
         arrayDelete(myArray2, rows);
@@ -212,7 +247,7 @@ int main(int argc, const char * argv[]) {
             string choice;
             cout<<"Continue? Y/N \n";
             cin>>choice;
-            
+        
             if(choice == "Y" || choice == "y"){
                 repeat = true;
                 answer = false;
@@ -225,8 +260,6 @@ int main(int argc, const char * argv[]) {
                 answer = true;
             }
         }
-        
-        
     }
     
     

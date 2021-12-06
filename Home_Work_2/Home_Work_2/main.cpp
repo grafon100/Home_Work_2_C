@@ -104,6 +104,17 @@ void zeroArrays(int **arr, int **arrResult, int row, int col){
 }
 
 //
+double prodRecip(int **arr, int row, int col){
+    double result = 1;
+    for(int i = 0; i<row; i++){
+        for(int j = 0; j<col; j++){
+            result *= (1.0/arr[i][j]);
+        }
+        
+    }
+    
+    return result;
+}
 
 double averageArith(int **arr, int row, int col){
     double result = 0;
@@ -262,9 +273,15 @@ int main(int argc, const char * argv[]) {
                 
             case 6:
 //              iloczynu odwrotności wszystkich niezerowych elementów;
+                double resultProdArr1;
+                double resultProdArr2;
                 
+                resultProdArr1 = prodRecip(myArray1, rows, cols);
+                cout<<"Average first array = "<<resultProdArr1<<endl;
+                
+                resultProdArr2 = prodRecip(myArray2, rows, cols);
+                cout<<"Average second array = "<<resultProdArr2<<endl;
 
-                
                 break;
                 
 

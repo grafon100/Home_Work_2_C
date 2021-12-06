@@ -10,6 +10,7 @@
 #include <iostream>
 #include <time.h>
 #include <iomanip>
+#include <math.h>
 
 using namespace std;
 
@@ -52,7 +53,6 @@ void sumArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
             arrResult[i][j] = arr1[i][j] + arr2[i][j];
         }
     }
-    
 }
 
 void subArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
@@ -102,6 +102,35 @@ void zeroArrays(int **arr, int **arrResult, int row, int col){
         }
     }
 }
+
+//
+
+double averageArith(int **arr, int row, int col){
+    double result = 0;
+    for(int i = 0; i<row; i++){
+        for(int j = 0; j<col; j++){
+            result += arr[i][j];
+        }
+    }
+    result /= (row*col);
+    
+    return result;
+}
+
+
+double geometricMean(int **arr, int row, int col){
+    double result = 1;
+    double count = row*col;
+    for(int i = 0; i<row; i++){
+        for(int j = 0; j<col; j++){
+            result *= arr[i][j];
+        }
+    }
+    result = abs(pow(result, 1.0/count));
+    return result;
+}
+
+
 
 
 
@@ -231,9 +260,53 @@ int main(int argc, const char * argv[]) {
                 }
                 break;
                 
+            case 6:
+//              iloczynu odwrotności wszystkich niezerowych elementów;
+                
+
+                
+                break;
+                
+
+                
+            case 7:
+//                średniej arytmetycznej podanych liczb;
+                double resultAverageArr1;
+                double resultAverageArr2;
+                
+                resultAverageArr1 = averageArith(myArray1, rows, cols);
+                cout<<"Average first array = "<<resultAverageArr1<<endl;
+                
+                resultAverageArr2 = averageArith(myArray2, rows, cols);
+                cout<<"Average second array = "<<resultAverageArr2<<endl;
+                break;
+
+                
+            case 8:
+//                średniej geometrycznej wartości bezwzględnej podanych liczb
+                double resultGeometricArr1;
+                double resultGeometricArr2;
+                
+                resultGeometricArr1 = geometricMean(myArray1, rows, cols);
+                cout<<"Average first array = "<<resultGeometricArr1<<endl;
+                
+                resultGeometricArr2 = geometricMean(myArray2, rows, cols);
+                cout<<"Average second array = "<<resultGeometricArr2<<endl;
+        
+                break;
+                
             default:
                 break;
+//            case 9:
+//
+////               częstości występowania każdej wartości;
+//
+//
+//                break;
+                
+       
         }
+    
         
 
         //delete myArrays

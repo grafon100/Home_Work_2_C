@@ -10,6 +10,21 @@
 #include <iomanip>
 
 using namespace std;
+// обязательно нужно проиницилизировать массив что бы
+// не оставлять муссор! а когда не нужно то удалить!
+int *arrBig;
+
+// функция увеличения массива
+int *arrSizePlus(int *arr, int size){
+    arrBig = new int [size+1];
+    for(int i = 0; i<size; i++){
+        arrBig[i] = arr[i];
+    }
+    delete [] arr;
+    return arrBig;
+}
+
+
 
 int **creatArr(int row, int col){
     int **arr = new int *[row];
@@ -61,17 +76,52 @@ int main(int argc, const char * argv[]) {
     arr1 = creatArr(rows, cols);
     fillArr(arr1, rows, cols);
     printArr(arr1, rows, cols);
+    cout<<endl;
     
     
-    
-    for(int i = 0; i<rows; i++){
-        for (int j = 0; j<cols; j++) {
-            //int num = arr1[i][j];
+//    bool start = true;
+//    while(start){
+        int num = 0;
+        int count = 1;
+        int *arrResult;
+        for(int i = 0; i<rows; i++){
+            for (int j = 0; j<cols; j++) {
+                
+                int colich = 0;
+                
+                int *arrNew = new int [count];
+               
+                num = arr1[i][j];
+                 
+               
+                
+                
+                
+                
+                for(int i = 0; i<rows; i++){
+                    for (int j = 0; j<cols; j++) {
+                        if(num == arr1[i][j]){
+                            colich++;
+                        }
+                        
+                    }
+                }
+                
+                
+                
+                
+             
+                
+                delete [] arrNew;
+                cout<<num<<": "<<colich<<endl;
+            }
             
             
         }
-    }
-    
+        
+        
+        
+//    }
     
     
     
@@ -81,6 +131,11 @@ int main(int argc, const char * argv[]) {
     
     
     deleteArr(arr1, rows);
+    
+    delete [] arrResult;
+    
+    
+    delete [] arrBig;
     
     
     

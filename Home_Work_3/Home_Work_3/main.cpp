@@ -27,11 +27,12 @@ MyDay * newTaskArray;
 //------------
 MyDay *arr;
 //------------
-MyDay *createNewTaskArray(MyDay *oldArr,int size){
-    MyDay *newArr = new MyDay [size+1];
-    for(int i = 0; i<size; i++)
+MyDay *createNewTaskArray(MyDay *oldArr,int *size){
+    MyDay *newArr = new MyDay [*size+1];
+    for(int i = 0; i<*size; i++)
         newArr[i] = oldArr[i];
     delete []oldArr;
+    
     return newArr;
 }
 
@@ -90,6 +91,9 @@ int main(int argc, const char * argv[]) {
         switch (task) {
             case 1:
                 filArr(taskArray, id);
+                createNewTaskArray(taskArray, id);
+                
+                
                 
                 
 //                cout<<"-----------------------\n";
@@ -107,7 +111,7 @@ int main(int argc, const char * argv[]) {
                 break;
             case 2:
                 cout<<*id;
-                for(int i = 0; i<1; i++){
+                for(int i = 0; i<*id; i++){
                     cout<<"==================================\n";
                     cout<<i+1<<endl;
                     cout<<"data: "<<taskArray[i].date<<endl;
@@ -131,7 +135,7 @@ int main(int argc, const char * argv[]) {
     //-----------------
     delete [] arr;
     //-----------------
-    delete [] taskArray;
+   // delete [] taskArray;
     delete [] newTaskArray;
     return 0;
 }

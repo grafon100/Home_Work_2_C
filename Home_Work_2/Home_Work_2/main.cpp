@@ -5,8 +5,6 @@
 //  Created by grafon100 on 02/12/2021.
 //
 
-
-
 #include <iostream>
 #include <time.h>
 #include <iomanip>
@@ -108,11 +106,11 @@ double prodRecip(int **arr, int row, int col){
     double result = 1;
     for(int i = 0; i<row; i++){
         for(int j = 0; j<col; j++){
-            result *= (1.0/arr[i][j]);
+            if(arr[i][j] != 0){
+                result *= (1.0/arr[i][j]);
+            }
         }
-        
     }
-    
     return result;
 }
 
@@ -128,7 +126,7 @@ double averageArith(int **arr, int row, int col){
     return result;
 }
 
-
+//?????????????????????????????????????????????????????????????????/
 double geometricMean(int **arr, int row, int col){
     double result = 1;
     double count = row*col;
@@ -157,10 +155,13 @@ int main(int argc, const char * argv[]) {
     int type;
     
     bool repeat = true;
-    bool answer = true;
+  
     
     
     while(repeat){
+        
+        bool answer = true;
+        
         cout<<"Input your 2D rows: ";
         cin>>rows;
         cout<<"Input your 2D cols: ";
@@ -311,6 +312,9 @@ int main(int argc, const char * argv[]) {
                 cout<<"Average second array = "<<resultGeometricArr2<<endl;
         
                 break;
+                
+            case 9:
+                
                 
             default:
                 break;

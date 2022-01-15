@@ -45,6 +45,8 @@ void arrayDelete(int **arr, int row){
     delete [] arr;
 }
 
+
+//1 ----- sumy dwóch macierzy
 void sumArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
     for(int i = 0; i<row; i++){
         for (int j = 0; j<col; j++) {
@@ -53,6 +55,7 @@ void sumArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
     }
 }
 
+//2.  ---- różnicy dwóch macierzy
 void subArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
     for(int i = 0; i<row; i++){
         for (int j = 0; j<col; j++) {
@@ -62,7 +65,7 @@ void subArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
     
 }
 
-
+//3. ---- iloczynu dwóch macierzy
 void multArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
     for(int i = 0; i<row; i++){
         for (int j = 0; j<col; j++) {
@@ -80,6 +83,7 @@ void multArrays(int **arr1, int **arr2, int **arrResult, int row, int col){
     }
 }
 
+//4. ---- transpozycji jednej macierzy
 void transportArray(int **arr, int **arrResult, int row, int col){
     for(int i = 0; i<col; i++){
         for (int j = 0; j<row; j++) {
@@ -88,7 +92,7 @@ void transportArray(int **arr, int **arrResult, int row, int col){
     }
 }
 
-
+//5. ---- zerowania elementów na głównej przekątnej danej macierzy
 void zeroArrays(int **arr, int **arrResult, int row, int col){
     for(int i = 0; i<row; i++){
         for (int j = 0; j<col; j++) {
@@ -101,7 +105,7 @@ void zeroArrays(int **arr, int **arrResult, int row, int col){
     }
 }
 
-//
+//6. ---- iloczynu odwrotności wszystkich niezerowych elementów
 double prodRecip(int **arr, int row, int col){
     double result = 1;
     for(int i = 0; i<row; i++){
@@ -114,6 +118,7 @@ double prodRecip(int **arr, int row, int col){
     return result;
 }
 
+//7. ---- średniej arytmetycznej podanych liczb
 double averageArith(int **arr, int row, int col){
     double result = 0;
     for(int i = 0; i<row; i++){
@@ -126,21 +131,22 @@ double averageArith(int **arr, int row, int col){
     return result;
 }
 
-//?????????????????????????????????????????????????????????????????/
+
+//8. ---- średniej geometrycznej wartości bezwzględnej podanych liczb
 double geometricMean(int **arr, int row, int col){
     double result = 1;
     double count = row*col;
     for(int i = 0; i<row; i++){
         for(int j = 0; j<col; j++){
-            result *= arr[i][j];
+            result *= abs(arr[i][j]);
         }
     }
-    result = abs(pow(result, 1.0/count));
+    result = pow(result, 1.0/count);
     return result;
 }
 
 
-//Start Task ---- 9
+//Start Task ---- 9. częstości występowania każdej wartości
 
 //push back element
 void addElement(int **&arr, int &rows, int value, int timeR){
@@ -222,17 +228,13 @@ void checkAndOutput(int **arr1, int rows, int cols){
     
     arrayDelete(arrTest, sizeArrTest);
 }
-
 //End Task ---- 9
 
 
 
-
-
 int main(int argc, const char * argv[]) {
-    //раскомить!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     srand(time(NULL));
-    //раскомить!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     int rows, cols;
     int **myArray1;
     int **myArray2;
@@ -287,10 +289,9 @@ int main(int argc, const char * argv[]) {
         switch (type) {
                
             case 1:
-                //sum
+                //1 -sumy dwóch macierzy
                 cout<<"===========================\n";
-                
-                
+    
                 resultArray = creat2Darr(rows, cols);
                 sumArrays(myArray1, myArray2, resultArray, rows, cols);
                 
@@ -301,7 +302,7 @@ int main(int argc, const char * argv[]) {
                 arrayDelete(resultArray, rows);
                 break;
             case 2:
-                //sub
+                //2 -różnicy dwóch macierzy
                 resultArray = creat2Darr(rows, cols);
                 subArrays(myArray1, myArray2, resultArray, rows, cols);
                 
@@ -311,7 +312,7 @@ int main(int argc, const char * argv[]) {
                 arrayDelete(resultArray, rows);
                 break;
             case 3:
-                //mult
+                //3 -iloczynu dwóch macierzy
                 cout<<"Mult First and Second array\n";
                 if(rows == cols){
                     resultArray = creat2Darr(rows, cols);
@@ -327,7 +328,7 @@ int main(int argc, const char * argv[]) {
                 }
                 break;
             case 4:
-                //transport
+                //-transpozycji jednej macierzy
                 resultArray = creat2Darr(cols, rows);
             
                 transportArray(myArray1, resultArray, rows, cols);
@@ -337,7 +338,7 @@ int main(int argc, const char * argv[]) {
                 arrayDelete(resultArray, cols);
                 break;
             case 5:
-                //sum
+                //5 -zerowania elementów na głównej przekątnej danej macierzy
                 cout<<"===========================\n";
                 if(rows == cols){
                 resultArray = creat2Darr(rows, cols);
@@ -359,7 +360,7 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case 6:
-//              iloczynu odwrotności wszystkich niezerowych elementów;
+                //6 -iloczynu odwrotności wszystkich niezerowych elementów
                 double resultProdArr1;
                 double resultProdArr2;
                 
@@ -374,7 +375,7 @@ int main(int argc, const char * argv[]) {
 
                 
             case 7:
-//                średniej arytmetycznej podanych liczb;
+//              7 -średniej arytmetycznej podanych liczb
                 double resultAverageArr1;
                 double resultAverageArr2;
                 
@@ -387,7 +388,7 @@ int main(int argc, const char * argv[]) {
 
                 
             case 8:
-//                średniej geometrycznej wartości bezwzględnej podanych liczb
+//              8 -średniej geometrycznej wartości bezwzględnej podanych liczb
                 double resultGeometricArr1;
                 double resultGeometricArr2;
                 
@@ -400,6 +401,7 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case 9:
+//              9 -częstości występowania każdej wartości
                 cout<<"~~ ~~ ~~ ~~ ~~\n";
                 cout<<"First array\n";
                 checkAndOutput(myArray1, rows, cols);
@@ -415,7 +417,7 @@ int main(int argc, const char * argv[]) {
     
         
 
-        //delete myArrays
+
         arrayDelete(myArray1, rows);
         arrayDelete(myArray2, rows);
 
@@ -440,8 +442,6 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-    
-    
-    
+
     return 0;
 }
